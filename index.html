@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Library Portal | PM SHRI KV Janakpuri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e5f74;       /* Calm Deep Teal */
+      --primary-light: #2c7a94;
+      --accent: #e09f3e;        /* Soft Warm Amber */
+      --bg-main: #f7f9f9;       /* Soft Off-White */
+      --card-bg: #ffffff;
+      --text-dark: #263238;
+      --text-muted: #546e7a;
+      --border-soft: #e0e8ea;
+      --shadow: 0 4px 14px rgba(30, 95, 116, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #154657 100%);
+      color: #ffffff;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand h1 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .brand p {
+      font-size: 0.8rem;
+      opacity: 0.88;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.25s;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    /* News Ticker */
+    .ticker-wrap {
+      background: #e6f2f5;
+      color: var(--primary);
+      padding: 8px 15px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--border-soft);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 24s linear infinite;
+    }
+
+    .ticker-wrap:hover .ticker-text {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1150px;
+      margin: 28px auto;
+      padding: 36px 28px;
+      background: linear-gradient(120deg, #e8f3f6 0%, #f4f8f9 100%);
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero-content h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: #eef6f8;
+    }
+
+    /* Container & Section Titles */
+    .container {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 10px 20px 40px;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin: 28px 0 16px;
+      padding-left: 12px;
+      border-left: 4px solid var(--accent);
+      font-weight: 600;
+    }
+
+    /* Resource Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 22px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      font-size: 1.08rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .card a {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Moving Free Books Shelf */
+    .shelf-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+      animation: scrollLeft 28s linear infinite;
+    }
+
+    .shelf-wrapper:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .book-item {
+      width: 175px;
+      background: #f9fbfb;
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .book-cover {
+      height: 110px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .book-item h4 {
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .book-item a {
+      display: inline-block;
+      font-size: 0.78rem;
+      background: var(--primary);
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    /* Book of the Week */
+    .botw-box {
+      background: #ffffff;
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+
+    .botw-badge {
+      background: #fdf3e1;
+      color: #a66b14;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .botw-cover {
+      width: 140px;
+      height: 190px;
+      background: linear-gradient(135deg, #2c7a94, #1e5f74);
+      border-radius: 10px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 15px;
+      font-weight: 600;
+      box-shadow: 0 6px 15px rgba(30,95,116,0.2);
+    }
+
+    .botw-info {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    /* Footer */
+    footer {
+      background: #1a4b5c;
+      color: #e0ecee;
+      text-align: center;
+      padding: 22px 15px;
+      font-size: 0.86rem;
+      margin-top: 30px;
+    }
+
+    /* Compact Floating Suggestion Button & Modal */
+    .fab-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 999;
+      transition: transform 0.2s;
+    }
+
+    .fab-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 15px;
+    }
+
+    .modal-box {
+      background: #fff;
+      width: 100%;
+      max-width: 380px;
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .stars {
+      display: flex;
+      gap: 8px;
+      font-size: 1.5rem;
+      margin: 10px 0;
+      cursor: pointer;
+      color: #ccc;
+    }
+
+    .stars span.active {
+      color: #f59e0b;
+    }
+
+    .modal-box input, .modal-box textarea {
+      width: 100%;
+      padding: 9px 12px;
+      margin: 8px 0;
+      border: 1px solid #cfd8dc;
+      border-radius: 8px;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero-content h2 { font-size: 1.4rem; }
+      nav ul { gap: 8px; }
+      nav a { font-size: 0.82rem; padding: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <h1>📚 Digital Library Portal</h1>
+        <p>PM SHRI Kendriya Vidyalaya Janakpuri (Shift - 2)</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#resources">Digital Library</a></li>
+          <li><a href="#bookshelf">Free Books</a></li>
+          <li><a href="#botw">Book of the Week</a></li>
+          <li><a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank">e-Granthalaya</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- News Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-text">
+      📢 Welcome to our Modern Digital Library! Explore free NCERT books, StoryWeaver stories, NDLI resources, and share your reading suggestions anytime.
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Read, Explore & Grow Every Day</h2>
+      <p>Your single gateway to school library catalogues, free digital storybooks, CBSE study materials, career guidance, and interactive reading campaigns.</p>
+      <div class="hero-buttons">
+        <a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank" class="btn btn-primary">🔍 Search Library Books (OPAC)</a>
+        <a href="#bookshelf" class="btn btn-outline">📖 Browse Free Shelf</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="container">
+
+    <!-- Digital Resources Section -->
+    <h2 class="section-title" id="resources">Digital Library & Academic Portals</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>🏛️ e-Granthalaya 4.0</h3>
+        <p>Search available physical books in our school library and check member account status online.</p>
+        <a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank">Open Web OPAC →</a>
+      </div>
+      <div class="card">
+        <h3>🇮🇳 National Digital Library (NDLI)</h3>
+        <p>Access millions of free e-books, articles, audiobooks, and research materials for all classes.</p>
+        <a href="https://ndl.iitkgp.ac.in/" target="_blank">Explore NDLI →</a>
+      </div>
+      <div class="card">
+        <h3>📘 NCERT & DIKSHA</h3>
+        <p>Download official NCERT textbooks, exemplar problems, and interactive e-content.</p>
+        <a href="https://ncert.nic.in/textbook.php" target="_blank">Read Textbooks →</a>
+      </div>
+      <div class="card">
+        <h3>🌱 StoryWeaver & NBT</h3>
+        <p>Read illustrated multilingual stories curated for young readers from Classes 1 to 10.</p>
+        <a href="https://storyweaver.org.in/" target="_blank">Start Reading →</a>
+      </div>
+    </div>
+
+    <!-- Moving Free Books Shelf -->
+    <h2 class="section-title" id="bookshelf">Free Digital Bookshelf (Hover to Pause)</h2>
+    <div class="shelf-wrapper">
+      <div class="marquee-track">
+        <!-- Set 1 -->
+        <div class="book-item">
+          <div class="book-cover" style="background:#3b7a57;">The Jungle Book</div>
+          <h4>Rudyard Kipling</h4>
+          <a href="https://www.gutenberg.org/ebooks/236" target="_blank">Read Free</a>
+        </div>
+        <div class="book-item">
+          <div class="book-cover" style="background:#5c6bc0;">Malgudi Days</div>
+          <h4>R. K. Narayan</h4>
+          <a href="https://ndl.iitkgp.ac.in/" target="_blank">Explore</a>
+        </div>
+        <div class="book-item">
+          <div class="book-cover" style="background:#8d6e63;">Panchatantra Tales</div>
+          <h4>Classic Stories</h4>
+          <a href="https://storyweaver.org.in/" target="_blank">Read Free</a>
+        </div>
+        <div class="book-item">
+          <div class="book-cover" style="background:#00838f;">Wings of Fire</div>
+          <h4>Dr. A.P.J. Abdul Kalam</h4>
+          <a href="https://ndl.iitkgp.ac.in/" target="_blank">Explore</a>
+        </div>
+        <div class="book-item">
+          <div class="book-cover" style="background:#6d4c41;">Ruskin Bond Stories</div>
+          <h4>Nature & Hills</h4>
+          <a href="https://storyweaver.org.in/" target="_blank">Read Free</a>
+        </div>
+        <!-- Duplicate Set for Smooth Infinite Loop -->
+        <div class="book-item">
+          <div class="book-cover" style="background:#3b7a57;">The Jungle Book</div>
+          <h4>Rudyard Kipling</h4>
+          <a href="https://www.gutenberg.org/ebooks/236" target="_blank">Read Free</a>
+        </div>
+        <div class="book-item">
+          <div class="book-cover" style="background:#5c6bc0;">Malgudi Days</div>
+          <h4>R. K. Narayan</h4>
+          <a href="https://ndl.iitkgp.ac.in/" target="_blank">Explore</a>
+        </div>
+        <div class="book-item">
+          <div class="book-cover" style="background:#8d6e63;">Panchatantra Tales</div>
+          <h4>Classic Stories</h4>
+          <a href="https://storyweaver.org.in/" target="_blank">Read Free</a>
+        </div>
+        <div class="book-item">
+          <div class="book-cover" style="background:#00838f;">Wings of Fire</div>
+          <h4>Dr. A.P.J. Abdul Kalam</h4>
+          <a href="https://ndl.iitkgp.ac.in/" target="_blank">Explore</a>
+        </div>
+        <div class="book-item">
+          <div class="book-cover" style="background:#6d4c41;">Ruskin Bond Stories</div>
+          <h4>Nature & Hills</h4>
+          <a href="https://storyweaver.org.in/" target="_blank">Read Free</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book of the Week -->
+    <h2 class="section-title" id="botw">Featured: Book of the Week</h2>
+    <div class="botw-box">
+      <div class="botw-cover">
+        <span>📖</span>
+        <p style="margin-top:8px;">The Blue Umbrella</p>
+      </div>
+      <div class="botw-info">
+        <span class="botw-badge">Recommended for Classes 6 – 9</span>
+        <h3 style="color:var(--primary); margin-bottom:6px;">The Blue Umbrella — By Ruskin Bond</h3>
+        <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:14px;">
+          A heartwarming story set in the hills of Garhwal about Binya, a young girl who trades her leopard-claw pendant for a beautiful blue silk umbrella, teaching timeless lessons on kindness, generosity, and forgiveness.
+        </p>
+        <a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank" class="btn btn-primary">Check Availability in Library</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Library & Reading Portal | PM SHRI Kendriya Vidyalaya Janakpuri (Shift - 2)</p>
+    <p style="font-size:0.78rem; opacity:0.8; margin-top:4px;">Designed for Students, Teachers & Curious Readers</p>
+  </footer>
+
+  <!-- Compact Floating Suggestion Button -->
+  <button class="fab-btn" onclick="openModal()">💬 Give Suggestion</button>
+
+  <!-- Suggestion Modal -->
+  <div class="modal-overlay" id="suggestionModal">
+    <div class="modal-box">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h3 style="color:var(--primary); font-size:1.1rem;">Library Feedback & Book Request</h3>
+      <div class="stars" id="starContainer">
+        <span onclick="rate(1)">★</span>
+        <span onclick="rate(2)">★</span>
+        <span onclick="rate(3)">★</span>
+        <span onclick="rate(4)">★</span>
+        <span onclick="rate(5)">★</span>
+      </div>
+      <input type="text" id="studentName" placeholder="Your Name & Class (e.g., Aarav, 8A)" />
+      <textarea id="suggestionText" rows="3" placeholder="Suggest a book title or share feedback..."></textarea>
+      <button class="btn btn-primary" style="width:100%; margin-top:6px;" onclick="sendSuggestion()">Send via WhatsApp</button>
+    </div>
+  </div>
+
+  <script>
+    let selectedRating = 5;
+
+    function openModal() {
+      document.getElementById('suggestionModal').style.display = 'flex';
+      rate(5);
+    }
+
+    function closeModal() {
+      document.getElementById('suggestionModal').style.display = 'none';
+    }
+
+    function rate(stars) {
+      selectedRating = stars;
+      const spans = document.querySelectorAll('#starContainer span');
+      spans.forEach((span, idx) => {
+        span.classList.toggle('active', idx < stars);
+      });
+    }
+
+    function sendSuggestion() {
+      const name = document.getElementById('studentName').value.trim() || 'Student';
+      const msg = document.getElementById('suggestionText').value.trim();
+      if (!msg) {
+        alert('Please write a book name or suggestion first.');
+        return;
+      }
+      const phone = '917309746347';
+      const text = encodeURIComponent(`📚 *Library Suggestion*\n*From:* ${name}\n*Rating:* ${selectedRating}/5 ⭐\n*Message:* ${msg}`);
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+      closeModal();
+    }
+  </script>
+
+</body>
+</html>
