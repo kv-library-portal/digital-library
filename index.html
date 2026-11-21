@@ -38,7 +38,7 @@
       line-height: 1.6;
     }
 
-    /* Sticky Top Navbar with Dropdown Submenus (No Clipping) */
+    /* Sticky Top Navbar with Dropdown Submenus */
     header {
       background: linear-gradient(135deg, #1e4e68 0%, #3b4d71 55%, #4a4063 100%);
       color: #fff;
@@ -88,9 +88,7 @@
       flex-wrap: wrap;
       align-items: center;
     }
-    nav ul.main-menu > li {
-      position: relative;
-    }
+    nav ul.main-menu > li { position: relative; }
     .menu-trigger {
       color: #fff;
       text-decoration: none;
@@ -126,11 +124,7 @@
       z-index: 1200;
       list-style: none;
     }
-    /* Right-align last dropdown so it never overflows screen */
-    nav ul.main-menu > li:last-child .submenu {
-      left: auto;
-      right: 0;
-    }
+    nav ul.main-menu > li:last-child .submenu { left: auto; right: 0; }
     .has-dropdown:hover .submenu,
     .has-dropdown.open .submenu {
       display: block;
@@ -218,11 +212,11 @@
       padding: 28px 30px;
       box-shadow: var(--shadow-md);
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
+      grid-template-columns: 1.55fr 1fr;
       gap: 24px;
       align-items: center;
     }
-    @media (max-width: 820px) {
+    @media (max-width: 860px) {
       .hero-card { grid-template-columns: 1fr; padding: 22px; }
     }
     .hero-pill {
@@ -236,26 +230,59 @@
       margin-bottom: 10px;
     }
     .hero-content h2 {
-      font-size: 1.7rem;
+      font-size: 1.68rem;
       color: var(--primary);
       line-height: 1.25;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-weight: 800;
     }
     .hero-content p {
       color: var(--text-muted);
-      font-size: 0.94rem;
-      margin-bottom: 20px;
+      font-size: 0.93rem;
+      margin-bottom: 16px;
     }
+
+    /* Live Multi-Portal Search Bar */
+    .search-box {
+      background: #ffffff;
+      border: 1.5px solid #cbd9e8;
+      border-radius: 13px;
+      padding: 6px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .search-box input {
+      flex: 1;
+      min-width: 180px;
+      border: none;
+      outline: none;
+      padding: 9px 12px;
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+    .search-box select {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--bg-main);
+      cursor: pointer;
+    }
+
     .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      padding: 10px 17px;
+      padding: 10px 16px;
       border-radius: 11px;
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
@@ -271,22 +298,49 @@
     .btn-purple { background: var(--secondary); color: #fff; }
     .btn-purple:hover { background: #372f4c; }
 
-    /* Hero Quick Stats Box */
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    /* Daily Word & Quote Card inside Hero Right */
+    .daily-column {
+      display: flex;
+      flex-direction: column;
       gap: 12px;
     }
-    .stat-tile {
-      background: rgba(255,255,255,0.88);
+    .daily-card {
+      background: rgba(255,255,255,0.92);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px;
-      text-align: center;
+      border-radius: 15px;
+      padding: 15px 18px;
       box-shadow: var(--shadow-sm);
     }
-    .stat-tile strong { display: block; font-size: 1.2rem; color: var(--primary); font-weight: 800; }
-    .stat-tile span { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
+    .daily-label {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .daily-word {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .daily-meaning {
+      font-size: 0.84rem;
+      color: var(--text-dark);
+      margin-top: 2px;
+    }
+    .daily-quote-text {
+      font-size: 0.86rem;
+      font-style: italic;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .daily-quote-author {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
 
     /* Main Container & Category Tabs */
     .container { max-width: 1200px; margin: 0 auto; padding: 12px 20px 44px; }
@@ -648,7 +702,6 @@
 
       <nav>
         <ul class="main-menu">
-          <!-- Menu 1: Digital Libraries -->
           <li class="has-dropdown">
             <button class="menu-trigger" onclick="toggleDropdown(this)">🏛️ Digital Libraries ▾</button>
             <ul class="submenu">
@@ -663,7 +716,6 @@
             </ul>
           </li>
 
-          <!-- Menu 2: Study & STEM -->
           <li class="has-dropdown">
             <button class="menu-trigger" onclick="toggleDropdown(this)">📘 Study &amp; STEM ▾</button>
             <ul class="submenu">
@@ -677,7 +729,6 @@
             </ul>
           </li>
 
-          <!-- Menu 3: Reading & Quiz -->
           <li class="has-dropdown">
             <button class="menu-trigger" onclick="toggleDropdown(this)">🎯 Reading &amp; Quiz ▾</button>
             <ul class="submenu">
@@ -690,7 +741,6 @@
             </ul>
           </li>
 
-          <!-- Menu 4: Careers & Blog -->
           <li class="has-dropdown">
             <button class="menu-trigger" onclick="toggleDropdown(this)">🚀 Careers &amp; Blog ▾</button>
             <ul class="submenu">
@@ -710,7 +760,7 @@
   <!-- News Ticker -->
   <div class="ticker-wrap">
     <div class="ticker-text">
-      📢 Welcome to PM SHRI KV Janakpuri Digital Library! • KVS Reading Campaign 2026 is Live — Track your books, play Class-wise Library Quizzes &amp; download your Digital Reading Certificate! • Explore NCERT, DIKSHA, NDLI, StoryWeaver, CBSE Papers &amp; Career Roadmaps below.
+      📢 Welcome to PM SHRI KV Janakpuri Digital Library! • KVS Reading Campaign 2026 is Live — Search books, play Class-wise Library Quizzes &amp; download your Digital Reading Certificate! • Explore NCERT, DIKSHA, NDLI, StoryWeaver, CBSE Papers &amp; Career Roadmaps below.
     </div>
   </div>
 
@@ -719,24 +769,44 @@
     <img src="banner.jpg" alt="PM SHRI Kendriya Vidyalaya Janakpuri Library Banner" class="header-banner-img" onerror="document.getElementById('bannerContainer').style.display='none';" />
   </div>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Live Search Bar & Daily Word/Quote -->
   <section class="hero">
     <div class="hero-card">
       <div class="hero-content">
         <span class="hero-pill">✨ KVS Digital Learning &amp; Literacy Hub</span>
         <h2>Read, Explore &amp; Grow Every Day</h2>
-        <p>Your all-in-one gateway to school library OPAC &amp; member login, KVS Reading Campaign tracking, free digital storybooks, STEM labs, CBSE exam resources, career guidance, and monthly Hindi educational articles.</p>
+        <p>Search books across our school library &amp; national digital repositories, track your reading progress, and explore curated study tools.</p>
+
+        <!-- Live Multi-Portal Search Bar -->
+        <form class="search-box" onsubmit="runPortalSearch(event)">
+          <input type="text" id="globalSearchInput" placeholder="Search book title, author, or topic (e.g., Ruskin Bond, Science)..." />
+          <select id="globalSearchTarget">
+            <option value="eg4">School OPAC (EG4)</option>
+            <option value="ndli">NDLI E-Books</option>
+            <option value="story">StoryWeaver</option>
+          </select>
+          <button type="submit" class="btn btn-primary" style="padding: 8px 15px;">🔍 Search</button>
+        </form>
+
         <div class="hero-btns">
-          <a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank" class="btn btn-primary">🔍 Search Books / Member Login</a>
           <a href="https://kv-janakpuri-reading-por-cc615.web.app" target="_blank" class="btn btn-accent">📖 Student Reading Login</a>
           <button onclick="openModal('quizModal')" class="btn btn-purple">🏆 Class-Wise Quiz</button>
+          <button onclick="openModal('certModal')" class="btn btn-soft">🏅 Reading Certificate</button>
         </div>
       </div>
-      <div class="hero-stats">
-        <div class="stat-tile"><strong>e-Granthalaya</strong><span>Live Book Search &amp; Login</span></div>
-        <div class="stat-tile"><strong>NDLI &amp; NCERT</strong><span>Free E-Books &amp; Solutions</span></div>
-        <div class="stat-tile"><strong>Classes 3–12</strong><span>Quizzes, STEM &amp; Careers</span></div>
-        <div class="stat-tile"><strong>24×7 Access</strong><span>Blogger &amp; Reading Portal</span></div>
+
+      <!-- Daily Auto-Changing Word of the Day & Quote -->
+      <div class="daily-column">
+        <div class="daily-card">
+          <span class="daily-label">📖 Word of the Day (Assembly &amp; Library)</span>
+          <div class="daily-word" id="wotdWord">Bibliophile (पुस्तक प्रेमी)</div>
+          <div class="daily-meaning" id="wotdMeaning">A person who collects or has a great love of books.</div>
+        </div>
+        <div class="daily-card" style="background: linear-gradient(135deg, #fffdf9, #f7f3fc);">
+          <span class="daily-label" style="color: var(--secondary);">💡 Thought of the Day</span>
+          <p class="daily-quote-text" id="qotdText">"Books are for use; every reader his or her book; every book its reader."</p>
+          <span class="daily-quote-author" id="qotdAuthor">— Dr. S. R. Ranganathan</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1160,7 +1230,48 @@
   </div>
 
   <script>
-    // Mobile/Click Dropdown Submenu Toggle
+    // Live Multi-Portal Book Search
+    function runPortalSearch(e) {
+      e.preventDefault();
+      const q = encodeURIComponent(document.getElementById('globalSearchInput').value.trim());
+      const target = document.getElementById('globalSearchTarget').value;
+      if (target === 'eg4') {
+        window.open('https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS', '_blank');
+      } else if (target === 'ndli') {
+        window.open(q ? `https://ndl.iitkgp.ac.in/se_search?key=${q}` : 'https://ndl.iitkgp.ac.in/', '_blank');
+      } else if (target === 'story') {
+        window.open(q ? `https://storyweaver.org.in/en/stories?query=${q}` : 'https://storyweaver.org.in/', '_blank');
+      }
+    }
+
+    // Daily Auto-Changing Word of the Day & Quote
+    const dailyWords = [
+      { word: "Bibliophile (पुस्तक प्रेमी)", meaning: "A person who collects or has a great love of books." },
+      { word: "Perseverance (दृढ़ता)", meaning: "Persistence in doing something despite difficulty or delay in achieving success." },
+      { word: "Curiosity (जिज्ञासा)", meaning: "A strong desire to know or learn something new every day." },
+      { word: "Almanac (पंचांग / वार्षिक संदर्भ ग्रंथ)", meaning: "An annual calendar containing important dates, facts, and statistical information." },
+      { word: "Anthology (संकलन)", meaning: "A published collection of poems, stories, or other pieces of writing." },
+      { word: "Erudite (विद्वान)", meaning: "Having or showing great knowledge or learning from reading." },
+      { word: "Compendium (सार-संग्रह)", meaning: "A collection of concise but detailed information about a particular subject." }
+    ];
+    const dailyQuotes = [
+      { text: "\"Books are for use; every reader his or her book; every book its reader.\"", author: "— Dr. S. R. Ranganathan" },
+      { text: "\"One best book is equal to a hundred good friends, but one good friend is equal to a library.\"", author: "— Dr. A.P.J. Abdul Kalam" },
+      { text: "\"It is always the same with mountains. Once you have lived with them for any length of time, you belong to them.\"", author: "— Ruskin Bond" },
+      { text: "\"A room without books is like a body without a soul.\"", author: "— Marcus Tullius Cicero" },
+      { text: "\"Reading is to the mind what exercise is to the body.\"", author: "— Joseph Addison" }
+    ];
+    (function setDailyContent() {
+      const dayIdx = new Date().getDate();
+      const w = dailyWords[dayIdx % dailyWords.length];
+      const q = dailyQuotes[dayIdx % dailyQuotes.length];
+      document.getElementById('wotdWord').innerText = w.word;
+      document.getElementById('wotdMeaning').innerText = w.meaning;
+      document.getElementById('qotdText').innerText = q.text;
+      document.getElementById('qotdAuthor').innerText = q.author;
+    })();
+
+    // Dropdown Submenu Toggle
     function toggleDropdown(btn) {
       const parent = btn.parentElement;
       const isOpen = parent.classList.contains('open');
@@ -1239,154 +1350,4 @@
     setRating(5);
 
     function sendFeedback() {
-      const name = document.getElementById('fbName').value.trim() || "Student";
-      const type = document.getElementById('fbType').value;
-      const msg = document.getElementById('fbMsg').value.trim();
-      if (!msg) { alert("Please write your message or book name."); return; }
-      const text = encodeURIComponent(`*KV Janakpuri Digital Library*\nName: ${name}\nType: ${type}\nRating: ${currentRating}/5\nMessage: ${msg}`);
-      window.open(`https://wa.me/917309746347?text=${text}`, '_blank');
-      closeModal('feedbackModal');
-    }
-
-    // Class-Wise Interactive Quiz Data
-    const quizSets = {
-      primary: {
-        title: "Class 3–5: The Little Bookworms Quiz",
-        questions: [
-          { q: "1. Who wrote the famous Panchatantra stories?", opts: ["Vishnu Sharma", "Ruskin Bond", "R. K. Narayan", "Rabindranath Tagore"], ans: 0 },
-          { q: "2. What is the name of the boy raised by wolves in 'The Jungle Book'?", opts: ["Simba", "Mowgli", "Baloo", "Bagheera"], ans: 1 },
-          { q: "3. Which Golden Rule should we always follow inside the school library?", opts: ["Talk loudly", "Maintain silence & handle books with care", "Tear pages", "Eat snacks"], ans: 1 },
-          { q: "4. What do we use to mark the page where we stopped reading?", opts: ["A pencil", "A bookmark", "Folding the page corner", "A ruler"], ans: 1 },
-          { q: "5. Who wrote 'The Blue Umbrella'?", opts: ["Ruskin Bond", "Munshi Premchand", "Sudha Murty", "Enid Blyton"], ans: 0 }
-        ]
-      },
-      middle: {
-        title: "Class 6–8: Junior Readers & Authors Quiz",
-        questions: [
-          { q: "1. Which fictional South Indian town was created by R. K. Narayan?", opts: ["Narnia", "Malgudi", "Hogwarts", "Agrabah"], ans: 1 },
-          { q: "2. 'Wings of Fire' is the inspiring autobiography of which Indian President?", opts: ["Dr. Rajendra Prasad", "Dr. A.P.J. Abdul Kalam", "Dr. S. Radhakrishnan", "Pranab Mukherjee"], ans: 1 },
-          { q: "3. Who is the author of 'Grandma's Bag of Stories' and 'Wise and Otherwise'?", opts: ["Sudha Murty", "Arundhati Roy", "Anita Desai", "Ruskin Bond"], ans: 0 },
-          { q: "4. What does OPAC stand for in our school library?", opts: ["Online Public Access Catalogue", "Open Paper And Cover", "Official Portal And Class", "Online Print Book Club"], ans: 0 },
-          { q: "5. Who wrote the famous Hindi story 'Idgah' (ईदगाह)?", opts: ["Munshi Premchand", "Mahadevi Verma", "Harivansh Rai Bachchan", "Ramdhari Singh Dinkar"], ans: 0 }
-        ]
-      },
-      senior: {
-        title: "Class 9–10: Literature, GK & Library Science Quiz",
-        questions: [
-          { q: "1. Who is revered as the 'Father of Library Science in India'?", opts: ["Dr. S. R. Ranganathan", "Dr. Homi J. Bhabha", "C. V. Raman", "Dr. S. Radhakrishnan"], ans: 0 },
-          { q: "2. Which Indian poet won the Nobel Prize in Literature in 1913 for 'Gitanjali'?", opts: ["Sarojini Naidu", "Rabindranath Tagore", "Subramania Bharati", "Bankim Chandra Chatterjee"], ans: 1 },
-          { q: "3. Which Government of India platform provides millions of free digital books & research papers?", opts: ["NDLI (National Digital Library of India)", "IRCTC", "BHIM", "UMANG"], ans: 0 },
-          { q: "4. 'The Diary of a Young Girl' was written during World War II by:", opts: ["Anne Frank", "Malala Yousafzai", "Helen Keller", "Marie Curie"], ans: 0 },
-          { q: "5. Which library management software is used across Kendriya Vidyalayas?", opts: ["e-Granthalaya", "MS Paint", "Tally", "AutoCAD"], ans: 0 }
-        ]
-      }
-    };
-
-    let activeSet = null, qIdx = 0, score = 0;
-
-    function showQuizMenu() {
-      document.getElementById('quizSubtitle').innerText = "Select your class group to begin:";
-      document.getElementById('quizContent').innerHTML = `
-        <div class="quiz-level-card" onclick="startClassQuiz('primary')">
-          <div>
-            <h4>🐣 Class 3–5: The Little Bookworms</h4>
-            <span>5 Questions • Stories, Animals &amp; Library Habits</span>
-          </div>
-          <strong>Start →</strong>
-        </div>
-        <div class="quiz-level-card" onclick="startClassQuiz('middle')">
-          <div>
-            <h4>📘 Class 6–8: Junior Readers &amp; Authors</h4>
-            <span>5 Questions • Indian Authors, Biographies &amp; OPAC</span>
-          </div>
-          <strong>Start →</strong>
-        </div>
-        <div class="quiz-level-card" onclick="startClassQuiz('senior')">
-          <div>
-            <h4>🎓 Class 9–10: Literature &amp; Library Science</h4>
-            <span>5 Questions • Classics, Nobel Laureates &amp; NDLI</span>
-          </div>
-          <strong>Start →</strong>
-        </div>
-      `;
-    }
-
-    function startClassQuiz(levelKey) {
-      activeSet = quizSets[levelKey];
-      qIdx = 0;
-      score = 0;
-      document.getElementById('quizSubtitle').innerText = activeSet.title;
-      renderQuestion();
-    }
-
-    function renderQuestion() {
-      const box = document.getElementById('quizContent');
-      const total = activeSet.questions.length;
-      if (qIdx >= total) {
-        const shareMsg = encodeURIComponent(`🏆 I scored ${score}/${total} in "${activeSet.title}" on the PM SHRI KV Janakpuri Digital Library Portal!`);
-        box.innerHTML = `<div style="text-align:center; padding:12px;">
-          <h4 style="font-size:1.2rem; color:var(--primary); margin-bottom:6px;">🎉 Quiz Completed!</h4>
-          <p style="font-size:1.05rem; margin-bottom:16px;">Your Score: <strong>${score} / ${total}</strong></p>
-          <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="showQuizMenu()">Try Another Class Quiz</button>
-            <a href="https://wa.me/?text=${shareMsg}" target="_blank" class="btn btn-soft">Share Score on WhatsApp</a>
-          </div>
-        </div>`;
-        return;
-      }
-      const item = activeSet.questions[qIdx];
-      box.innerHTML = `<p style="font-weight:600; margin-bottom:10px;">${item.q}</p>` +
-        item.opts.map((opt, idx) => `<button class="quiz-option" id="opt_${idx}" onclick="checkAns(${idx})">${opt}</button>`).join('');
-    }
-
-    function checkAns(idx) {
-      const item = activeSet.questions[qIdx];
-      const buttons = document.querySelectorAll('.quiz-option');
-      buttons.forEach(b => b.disabled = true);
-      if (idx === item.ans) {
-        score++;
-        document.getElementById(`opt_${idx}`).classList.add('correct');
-      } else {
-        document.getElementById(`opt_${idx}`).classList.add('wrong');
-        document.getElementById(`opt_${item.ans}`).classList.add('correct');
-      }
-      setTimeout(() => {
-        qIdx++;
-        renderQuestion();
-      }, 850);
-    }
-
-    // Auto-Sync Blogger Posts with Thumbnails
-    function loadBloggerPosts(data) {
-      const grid = document.getElementById('bloggerPostsGrid');
-      const entries = (data.feed && data.feed.entry) ? data.feed.entry : [];
-      if (!entries.length) {
-        grid.innerHTML = '<p>No posts found on blog.</p>';
-        return;
-      }
-      grid.innerHTML = entries.map(entry => {
-        const title = entry.title.$t;
-        const linkObj = entry.link.find(l => l.rel === 'alternate');
-        const url = linkObj ? linkObj.href : 'https://libraryjanakpurishift2.blogspot.com/';
-        const date = new Date(entry.published.$t).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-        const rawText = entry.summary ? entry.summary.$t : (entry.content ? entry.content.$t : '');
-        const cleanText = rawText.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...';
-        const thumb = entry.media$thumbnail ? entry.media$thumbnail.url.replace('/s72-c/', '/w400-h220-c/') : '';
-        const imgTag = thumb ? `<img src="${thumb}" alt="${title}" class="blog-thumb" />` : '';
-        return `
-          <div class="card">
-            <div>
-              ${imgTag}
-              <span class="tag">📅 ${date}</span>
-              <h3>${title}</h3>
-              <p>${cleanText}</p>
-            </div>
-            <a href="${url}" target="_blank" class="card-link">Read Full Post on Blog →</a>
-          </div>
-        `;
-      }).join('');
-    }
-  </script>
-  <script src="https://libraryjanakpurishift2.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=6&callback=loadBloggerPosts"></script>
-</body>
-</html>
+      const name = document.getElementById('fbName
