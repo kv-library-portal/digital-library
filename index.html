@@ -3,47 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Library Portal | PM SHRI KV Janakpuri</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Digital Library Portal | PM SHRI Kendriya Vidyalaya Janakpuri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1e5f74;       /* Calm Deep Teal */
-      --primary-light: #2c7a94;
-      --accent: #e09f3e;        /* Soft Warm Amber */
-      --bg-main: #f7f9f9;       /* Soft Off-White */
-      --card-bg: #ffffff;
-      --text-dark: #263238;
-      --text-muted: #546e7a;
-      --border-soft: #e0e8ea;
-      --shadow: 0 4px 14px rgba(30, 95, 116, 0.08);
+      /* Soft, Eye-Friendly Pastel & Academic Palette */
+      --bg-main: #f7f9fc;
+      --bg-card: #ffffff;
+      --primary: #2b5876;
+      --primary-light: #e8f1f8;
+      --accent: #3a7bd5;
+      --sage: #e9f5ef;
+      --sage-text: #1e6b4b;
+      --peach: #fdf2e9;
+      --peach-text: #9c5218;
+      --lavender: #f3effb;
+      --lavender-text: #4a357a;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 6px 20px rgba(43, 88, 118, 0.06);
+      --radius: 14px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
       background-color: var(--bg-main);
       color: var(--text-dark);
       line-height: 1.6;
     }
 
-    /* Header & Navigation */
+    /* Header */
     header {
-      background: linear-gradient(135deg, var(--primary) 0%, #154657 100%);
-      color: #ffffff;
-      padding: 18px 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+      color: #fff;
+      padding: 16px 24px;
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     }
-
-    .nav-container {
-      max-width: 1150px;
+    .header-inner {
+      max-width: 1180px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -51,410 +53,368 @@
       flex-wrap: wrap;
       gap: 12px;
     }
-
-    .brand h1 {
-      font-size: 1.35rem;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-    }
-
-    .brand p {
-      font-size: 0.8rem;
-      opacity: 0.88;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: #ffffff;
+    .brand h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.3px; }
+    .brand p { font-size: 0.85rem; opacity: 0.9; }
+    nav ul { list-style: none; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    nav a, nav button {
+      color: #fff;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: background 0.25s;
-    }
-
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.16);
-    }
-
-    /* News Ticker */
-    .ticker-wrap {
-      background: #e6f2f5;
-      color: var(--primary);
-      padding: 8px 15px;
       font-size: 0.88rem;
       font-weight: 500;
-      border-bottom: 1px solid var(--border-soft);
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    nav a:hover, nav button:hover { background: rgba(255,255,255,0.24); }
+
+    /* Ticker */
+    .ticker-wrap {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border-bottom: 1px solid #d5e5f2;
       overflow: hidden;
       white-space: nowrap;
     }
-
     .ticker-text {
       display: inline-block;
-      padding-left: 100%;
-      animation: ticker 24s linear infinite;
+      animation: ticker 28s linear infinite;
     }
-
-    .ticker-wrap:hover .ticker-text {
-      animation-play-state: paused;
-    }
-
+    .ticker-wrap:hover .ticker-text { animation-play-state: paused; }
     @keyframes ticker {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-100%, 0, 0); }
+      0% { transform: translateX(60%); }
+      100% { transform: translateX(-100%); }
     }
 
-    /* Hero Section */
+    /* Hero */
     .hero {
-      max-width: 1150px;
-      margin: 28px auto;
-      padding: 36px 28px;
-      background: linear-gradient(120deg, #e8f3f6 0%, #f4f8f9 100%);
-      border-radius: 16px;
-      border: 1px solid var(--border-soft);
+      max-width: 1180px;
+      margin: 24px auto 16px;
+      padding: 0 20px;
+    }
+    .hero-card {
+      background: linear-gradient(120deg, #eef6fb 0%, #f5f0fa 100%);
+      border: 1px solid #dce8f2;
+      border-radius: 18px;
+      padding: 28px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 20px;
     }
-
-    .hero-content {
-      max-width: 650px;
-    }
-
-    .hero-content h2 {
-      font-size: 1.8rem;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .hero-content p {
-      color: var(--text-muted);
-      font-size: 0.96rem;
-      margin-bottom: 20px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
+    .hero-content { max-width: 680px; }
+    .hero-content h2 { font-size: 1.65rem; color: var(--primary); margin-bottom: 8px; }
+    .hero-content p { color: var(--text-muted); font-size: 0.96rem; margin-bottom: 18px; }
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: transform 0.2s, box-shadow 0.2s;
       cursor: pointer;
       border: none;
+      transition: 0.2s;
     }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: #1e425b; }
+    .btn-soft { background: #fff; color: var(--primary); border: 1px solid #cbd5e1; }
+    .btn-soft:hover { background: #f1f5f9; }
+    .btn-quiz { background: #4e4376; color: #fff; }
+    .btn-quiz:hover { background: #3b325c; }
 
-    .btn-primary {
+    /* Container & Tabs */
+    .container { max-width: 1180px; margin: 0 auto; padding: 12px 20px 40px; }
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 8px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .tab-btn {
+      padding: 10px 16px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .tab-btn.active {
       background: var(--primary);
       color: #fff;
     }
+    .tab-panel { display: none; animation: fadeIn 0.25s ease; }
+    .tab-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-    .btn-primary:hover {
-      background: var(--primary-light);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background: #fff;
-      color: var(--primary);
-      border: 1.5px solid var(--primary);
-    }
-
-    .btn-outline:hover {
-      background: #eef6f8;
-    }
-
-    /* Container & Section Titles */
-    .container {
-      max-width: 1150px;
-      margin: 0 auto;
-      padding: 10px 20px 40px;
-    }
-
-    .section-title {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin: 28px 0 16px;
-      padding-left: 12px;
-      border-left: 4px solid var(--accent);
-      font-weight: 600;
-    }
-
-    /* Resource Grid */
+    /* Grid & Cards */
+    .section-title { font-size: 1.2rem; color: var(--primary); margin: 22px 0 14px; font-weight: 700; }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 18px;
+      gap: 16px;
     }
-
     .card {
-      background: var(--card-bg);
-      padding: 22px;
-      border-radius: 12px;
-      border: 1px solid var(--border-soft);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
       box-shadow: var(--shadow);
-      transition: transform 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s;
     }
-
-    .card:hover {
-      transform: translateY(-4px);
-    }
-
-    .card h3 {
-      font-size: 1.08rem;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .card a {
+    .card:hover { transform: translateY(-3px); }
+    .card h3 { font-size: 1.05rem; color: var(--text-dark); margin-bottom: 6px; }
+    .card p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px; }
+    .card-link {
       font-size: 0.86rem;
       font-weight: 600;
-      color: var(--primary-light);
+      color: var(--accent);
       text-decoration: none;
     }
+    .card-link:hover { text-decoration: underline; }
 
-    .card a:hover {
-      text-decoration: underline;
-    }
-
-    /* Moving Free Books Shelf */
+    /* Moving Free Bookshelf */
     .shelf-wrapper {
-      background: #ffffff;
-      border: 1px solid var(--border-soft);
-      border-radius: 14px;
-      padding: 20px;
       overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 0;
       box-shadow: var(--shadow);
     }
-
-    .marquee-track {
+    .shelf-track {
       display: flex;
-      gap: 18px;
+      gap: 16px;
       width: max-content;
-      animation: scrollLeft 28s linear infinite;
+      animation: scrollShelf 26s linear infinite;
     }
-
-    .shelf-wrapper:hover .marquee-track {
-      animation-play-state: paused;
-    }
-
-    @keyframes scrollLeft {
+    .shelf-wrapper:hover .shelf-track { animation-play-state: paused; }
+    @keyframes scrollShelf {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-
     .book-item {
-      width: 175px;
-      background: #f9fbfb;
-      border: 1px solid var(--border-soft);
-      border-radius: 10px;
+      width: 195px;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       padding: 14px;
       text-align: center;
       flex-shrink: 0;
     }
-
     .book-cover {
-      height: 110px;
+      background: linear-gradient(135deg, #d7e8f7, #e6dff5);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 18px 10px;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.85rem;
-      padding: 10px;
       margin-bottom: 10px;
     }
-
-    .book-item h4 {
-      font-size: 0.88rem;
-      color: var(--text-dark);
-      margin-bottom: 6px;
-    }
-
+    .book-item h4 { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px; }
     .book-item a {
       display: inline-block;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       background: var(--primary);
       color: #fff;
       padding: 5px 12px;
-      border-radius: 5px;
+      border-radius: 6px;
       text-decoration: none;
     }
 
     /* Book of the Week */
-    .botw-box {
-      background: #ffffff;
-      border: 1px solid var(--border-soft);
-      border-radius: 14px;
-      padding: 24px;
+    .botw-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
       display: flex;
-      gap: 24px;
+      gap: 20px;
       align-items: center;
       flex-wrap: wrap;
       box-shadow: var(--shadow);
     }
-
     .botw-badge {
-      background: #fdf3e1;
-      color: #a66b14;
-      padding: 4px 12px;
-      border-radius: 20px;
+      background: var(--peach);
+      color: var(--peach-text);
+      padding: 22px;
+      border-radius: 12px;
+      text-align: center;
+      min-width: 160px;
+      font-weight: 700;
+    }
+    .botw-info { flex: 1; min-width: 240px; }
+    .tag {
+      display: inline-block;
+      background: var(--sage);
+      color: var(--sage-text);
       font-size: 0.78rem;
       font-weight: 600;
-      display: inline-block;
-      margin-bottom: 8px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 6px;
     }
 
-    .botw-cover {
-      width: 140px;
-      height: 190px;
-      background: linear-gradient(135deg, #2c7a94, #1e5f74);
-      border-radius: 10px;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 15px;
-      font-weight: 600;
-      box-shadow: 0 6px 15px rgba(30,95,116,0.2);
+    /* Career Grid */
+    .career-chip {
+      background: var(--lavender);
+      color: var(--lavender-text);
+      padding: 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      border: 1px solid #e2d9f3;
+      transition: 0.2s;
     }
+    .career-chip:hover { background: #e8e0f8; }
+    .career-chip h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .career-chip span { font-size: 0.8rem; opacity: 0.85; }
 
-    .botw-info {
-      flex: 1;
-      min-width: 250px;
+    /* Pledge Box */
+    .pledge-box {
+      background: var(--sage);
+      border: 1px solid #c6e6d5;
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .pledge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .pledge-row input, .pledge-row select {
+      padding: 9px 12px;
+      border: 1px solid #b5d8c5;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      background: #fff;
     }
 
     /* Footer */
     footer {
-      background: #1a4b5c;
-      color: #e0ecee;
+      background: #1e293b;
+      color: #cbd5e1;
       text-align: center;
-      padding: 22px 15px;
-      font-size: 0.86rem;
+      padding: 22px 16px;
+      font-size: 0.85rem;
       margin-top: 30px;
     }
 
-    /* Compact Floating Suggestion Button & Modal */
-    .fab-btn {
+    /* Compact Floating Action Buttons */
+    .fab-group {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--accent);
+      bottom: 18px;
+      right: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 200;
+    }
+    .fab-btn {
+      background: var(--primary);
       color: #fff;
       border: none;
-      padding: 11px 18px;
+      padding: 10px 15px;
       border-radius: 30px;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 600;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
       cursor: pointer;
-      z-index: 999;
-      transition: transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
+    .fab-btn.secondary { background: #4e4376; }
 
-    .fab-btn:hover {
-      transform: scale(1.05);
-    }
-
+    /* Modal */
     .modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.45);
+      background: rgba(15, 23, 42, 0.55);
+      z-index: 300;
       justify-content: center;
       align-items: center;
-      z-index: 1000;
-      padding: 15px;
+      padding: 16px;
     }
-
+    .modal-overlay.open { display: flex; }
     .modal-box {
       background: #fff;
+      border-radius: 16px;
+      max-width: 480px;
       width: 100%;
-      max-width: 380px;
-      border-radius: 14px;
-      padding: 22px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      padding: 24px;
       position: relative;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      max-height: 90vh;
+      overflow-y: auto;
     }
-
-    .close-modal {
+    .close-btn {
       position: absolute;
-      top: 12px;
-      right: 15px;
-      font-size: 1.3rem;
+      top: 14px;
+      right: 16px;
+      font-size: 1.4rem;
       cursor: pointer;
       color: var(--text-muted);
     }
-
-    .stars {
-      display: flex;
-      gap: 8px;
-      font-size: 1.5rem;
-      margin: 10px 0;
-      cursor: pointer;
-      color: #ccc;
-    }
-
-    .stars span.active {
-      color: #f59e0b;
-    }
-
-    .modal-box input, .modal-box textarea {
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 0.84rem; font-weight: 600; margin-bottom: 4px; }
+    .form-group input, .form-group select, .form-group textarea {
       width: 100%;
       padding: 9px 12px;
-      margin: 8px 0;
-      border: 1px solid #cfd8dc;
+      border: 1px solid var(--border);
       border-radius: 8px;
+      font-family: inherit;
       font-size: 0.88rem;
     }
-
-    @media (max-width: 600px) {
-      .hero-content h2 { font-size: 1.4rem; }
-      nav ul { gap: 8px; }
-      nav a { font-size: 0.82rem; padding: 5px 8px; }
+    .stars span { font-size: 1.4rem; cursor: pointer; color: #cbd5e1; }
+    .stars span.active { color: #f59e0b; }
+    .quiz-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 9px 12px;
+      margin: 6px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-main);
+      cursor: pointer;
+      font-size: 0.88rem;
     }
+    .quiz-option:hover { background: var(--primary-light); }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <div class="nav-container">
+    <div class="header-inner">
       <div class="brand">
         <h1>📚 Digital Library Portal</h1>
         <p>PM SHRI Kendriya Vidyalaya Janakpuri</p>
       </div>
       <nav>
         <ul>
-          <li><a href="#resources">Digital Library</a></li>
-          <li><a href="#bookshelf">Free Books</a></li>
-          <li><a href="#botw">Book of the Week</a></li>
           <li><a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank">e-Granthalaya</a></li>
+          <li><a href="https://kv-janakpuri-reading-por-cc615.web.app" target="_blank">Reading Portal</a></li>
+          <li><button onclick="openModal('quizModal')">🧩 Play Quiz</button></li>
+          <li><a href="https://libraryjanakpurishift2.blogspot.com/" target="_blank">Library Blog</a></li>
         </ul>
       </nav>
     </div>
@@ -463,120 +423,264 @@
   <!-- News Ticker -->
   <div class="ticker-wrap">
     <div class="ticker-text">
-      📢 Welcome to our Modern Digital Library! Explore free NCERT books, StoryWeaver stories, NDLI resources, and share your reading suggestions anytime.
+      📢 Welcome to PM SHRI KV Janakpuri Digital Library! • KVS Reading Campaign 2026 is Live — Log your daily reading & take the Pledge! • Explore Free NCERT, NDLI, StoryWeaver, CBSE Papers & Career Cards below.
     </div>
   </div>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-content">
-      <h2>Read, Explore & Grow Every Day</h2>
-      <p>Your single gateway to school library catalogues, free digital storybooks, CBSE study materials, career guidance, and interactive reading campaigns.</p>
-      <div class="hero-buttons">
-        <a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank" class="btn btn-primary">🔍 Search Library Books (OPAC)</a>
-        <a href="#bookshelf" class="btn btn-outline">📖 Browse Free Shelf</a>
+    <div class="hero-card">
+      <div class="hero-content">
+        <h2>Read, Explore &amp; Grow Every Day</h2>
+        <p>Your single gateway to school library catalogues, KVS Reading Campaign tracking, free digital storybooks, CBSE exam resources, career guidance, and interactive quizzes.</p>
+        <div class="hero-btns">
+          <a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank" class="btn btn-primary">🔍 Search Library Books (OPAC)</a>
+          <a href="https://kv-janakpuri-reading-por-cc615.web.app" target="_blank" class="btn btn-soft">📖 Student Reading Login</a>
+          <button onclick="openModal('quizModal')" class="btn btn-quiz">🏆 Little Bookworms Quiz</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Main Content -->
+  <!-- Main Content with Compact Tabs -->
   <div class="container">
 
-    <!-- Digital Resources Section -->
-    <h2 class="section-title" id="resources">Digital Library & Academic Portals</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>🏛️ e-Granthalaya 4.0</h3>
-        <p>Search available physical books in our school library and check member account status online.</p>
-        <a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank">Open Web OPAC →</a>
-      </div>
-      <div class="card">
-        <h3>🇮🇳 National Digital Library (NDLI)</h3>
-        <p>Access millions of free e-books, articles, audiobooks, and research materials for all classes.</p>
-        <a href="https://ndl.iitkgp.ac.in/" target="_blank">Explore NDLI →</a>
-      </div>
-      <div class="card">
-        <h3>📘 NCERT & DIKSHA</h3>
-        <p>Download official NCERT textbooks, exemplar problems, and interactive e-content.</p>
-        <a href="https://ncert.nic.in/textbook.php" target="_blank">Read Textbooks →</a>
-      </div>
-      <div class="card">
-        <h3>🌱 StoryWeaver & NBT</h3>
-        <p>Read illustrated multilingual stories curated for young readers from Classes 1 to 10.</p>
-        <a href="https://storyweaver.org.in/" target="_blank">Start Reading →</a>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('tab-digital', this)">🏛️ Digital Library &amp; STEM</button>
+      <button class="tab-btn" onclick="switchTab('tab-campaign', this)">🎯 Reading Campaign &amp; Pledge</button>
+      <button class="tab-btn" onclick="switchTab('tab-cbse', this)">🎓 CBSE &amp; Career Guidance</button>
+      <button class="tab-btn" onclick="switchTab('tab-blog', this)">✍️ Hindi Blog &amp; Parents Corner</button>
+    </div>
+
+    <!-- TAB 1: Digital Library & STEM -->
+    <div id="tab-digital" class="tab-panel active">
+      <div class="grid">
+        <div class="card">
+          <div>
+            <h3>🏛️ e-Granthalaya 4.0</h3>
+            <p>Search available physical books in our school library and check member account status online.</p>
+          </div>
+          <a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank" class="card-link">Open Web OPAC →</a>
+        </div>
+        <div class="card">
+          <div>
+            <h3>🇮🇳 National Digital Library (NDLI)</h3>
+            <p>Access millions of free e-books, articles, audiobooks, and research materials for all classes.</p>
+          </div>
+          <a href="https://ndl.iitkgp.ac.in/" target="_blank" class="card-link">Explore NDLI →</a>
+        </div>
+        <div class="card">
+          <div>
+            <h3>📘 NCERT &amp; DIKSHA</h3>
+            <p>Download official NCERT textbooks, exemplar problems, and interactive e-content.</p>
+          </div>
+          <a href="https://ncert.nic.in/textbook.php" target="_blank" class="card-link">Read Textbooks →</a>
+        </div>
+        <div class="card">
+          <div>
+            <h3>🌱 StoryWeaver &amp; NBT</h3>
+            <p>Read illustrated multilingual stories curated for young readers from Classes 1 to 10.</p>
+          </div>
+          <a href="https://storyweaver.org.in/" target="_blank" class="card-link">Start Reading →</a>
+        </div>
+        <div class="card">
+          <div>
+            <h3>🔬 PhET &amp; OLabs (STEM)</h3>
+            <p>Interactive Science &amp; Maths simulations and virtual NCERT lab experiments for Classes 6–12.</p>
+          </div>
+          <a href="https://phet.colorado.edu/" target="_blank" class="card-link">Launch Simulations →</a>
+        </div>
+        <div class="card">
+          <div>
+            <h3>♿ Sugamya Pustakalaya</h3>
+            <p>Accessible digital library offering DAISY &amp; ePub books for visually impaired and print-disabled learners.</p>
+          </div>
+          <a href="https://library.daisyindia.org/" target="_blank" class="card-link">Visit Portal →</a>
+        </div>
       </div>
     </div>
 
-    <!-- Moving Free Books Shelf -->
-    <h2 class="section-title" id="bookshelf">Free Digital Bookshelf (Hover to Pause)</h2>
+    <!-- TAB 2: Reading Campaign & Pledge -->
+    <div id="tab-campaign" class="tab-panel">
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="tag">KVS Literacy Drive</span>
+            <h3>📊 Student Reading Progress Tracker</h3>
+            <p>Log in with your Student ID / Mobile OTP to record books read, track reading minutes, and unlock badges.</p>
+          </div>
+          <a href="https://kv-janakpuri-reading-por-cc615.web.app" target="_blank" class="card-link">Open Reading Tracker Portal →</a>
+        </div>
+        <div class="card">
+          <div>
+            <span class="tag">Curated Bundles</span>
+            <h3>📚 Class-Wise Reading Lists (6–10)</h3>
+            <p>Handpicked fiction, biographies, science adventures, and Hindi Sahitya bundles for every class.</p>
+          </div>
+          <a href="https://libraryjanakpurishift2.blogspot.com/" target="_blank" class="card-link">View Reading Lists →</a>
+        </div>
+      </div>
+
+      <!-- Interactive Reading Pledge -->
+      <div class="pledge-box">
+        <h3 style="color: var(--sage-text);">🤝 Take the School Reading Pledge</h3>
+        <p style="font-size: 0.88rem; color: #2d5a44;">Commit to reading at least 20 minutes every day beyond textbooks and generate your digital pledge.</p>
+        <div class="pledge-row">
+          <input type="text" id="pledgeName" placeholder="Student Name" />
+          <select id="pledgeClass">
+            <option value="">Select Class</option>
+            <option>Class 3–5</option>
+            <option>Class 6–8</option>
+            <option>Class 9–10</option>
+            <option>Class 11–12</option>
+          </select>
+          <button class="btn btn-primary" onclick="generatePledge()">Generate Pledge</button>
+        </div>
+        <p id="pledgeOutput" style="margin-top: 10px; font-weight: 600; color: var(--primary); font-size: 0.9rem;"></p>
+      </div>
+    </div>
+
+    <!-- TAB 3: CBSE & Career Guidance -->
+    <div id="tab-cbse" class="tab-panel">
+      <div class="grid" style="margin-bottom: 18px;">
+        <div class="card">
+          <div>
+            <span class="tag">Exam Corner</span>
+            <h3>📄 CBSE Sample Papers &amp; Marking Scheme</h3>
+            <p>Latest CBSE Class 10 &amp; 12 Question Papers, Previous Year Papers, and Competency-Based Questions.</p>
+          </div>
+          <a href="https://cbseacademic.nic.in/SQP_CLASSXII_2024-25.html" target="_blank" class="card-link">Download CBSE Papers →</a>
+        </div>
+        <div class="card">
+          <div>
+            <span class="tag">Skill &amp; Olympiad</span>
+            <h3>🧠 CBSE Reading Challenge &amp; Olympiads</h3>
+            <p>Practice comprehension passages, critical thinking worksheets, and library activity sheets.</p>
+          </div>
+          <a href="https://cbseacademic.nic.in/" target="_blank" class="card-link">Explore CBSE Academic →</a>
+        </div>
+      </div>
+
+      <h3 class="section-title">🚀 Career Guidance Cards (Click any career to view roadmap)</h3>
+      <div class="grid">
+        <div class="career-chip" onclick="showCareer('Teacher & Educator', 'B.Ed / Integrated B.A.-B.Ed or B.Sc.-B.Ed, CTET / KVS Recruitment. Key skills: Communication, Pedagogy, Empathy.')">
+          <h4>👩‍🏫 Teacher</h4><span>Education &amp; Mentorship →</span>
+        </div>
+        <div class="career-chip" onclick="showCareer('Police Officer (IPS / State Police)', 'Graduation in any stream + UPSC CSE (for IPS) or State PSC / SSC CPO. Key skills: Leadership, Physical Fitness, Law.')">
+          <h4>👮 Police Officer</h4><span>Public Safety &amp; Civil Services →</span>
+        </div>
+        <div class="career-chip" onclick="showCareer('IT Professional & AI Engineer', 'B.Tech / BCA / B.Sc Computer Science. Focus on Coding, Data Structures, Cloud & AI. Key skills: Problem Solving.')">
+          <h4>💻 IT Professional</h4><span>Software, AI &amp; Cybersecurity →</span>
+        </div>
+        <div class="career-chip" onclick="showCareer('Architect', 'Class 12 with PCM + NATA / JEE Main Paper 2 + B.Arch (5 Years). Key skills: Design, Spatial Visualization, CAD.')">
+          <h4>🏛️ Architect</h4><span>Urban &amp; Sustainable Design →</span>
+        </div>
+        <div class="career-chip" onclick="showCareer('Scientist & Researcher', 'B.Sc / M.Sc / Integrated BS-MS (IISER, NISER, IISc) + PhD. Opportunities in ISRO, DRDO, CSIR.')">
+          <h4>🔬 Scientist</h4><span>Research, Space &amp; Innovation →</span>
+        </div>
+        <div class="career-chip" onclick="showCareer('Business Analyst', 'BBA / B.Com / Economics / Engineering + Data Analytics (Excel, SQL, Python) / MBA.')">
+          <h4>📈 Business Analyst</h4><span>Data Strategy &amp; Management →</span>
+        </div>
+        <div class="career-chip" onclick="showCareer('Nurse & Healthcare Specialist', 'Class 12 with PCB + B.Sc Nursing / GNM + Nursing Officer Exams (AIIMS NORCET).')">
+          <h4>🩺 Nurse</h4><span>Clinical Care &amp; Healthcare →</span>
+        </div>
+        <div class="career-chip" onclick="showCareer('Entrepreneur', 'Any stream + Design Thinking, Financial Literacy, Startup Incubation (ATL / NITI Aayog).')">
+          <h4>💡 Entrepreneur</h4><span>Innovation &amp; Venture Building →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: Hindi Blog & Parents Corner -->
+    <div id="tab-blog" class="tab-panel">
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="tag">मासिक शैक्षिक लेख (Hindi)</span>
+            <h3>✍️ पुस्तकालय ब्लॉग: पढ़ने की आदत और छात्र विकास</h3>
+            <p>कक्षा 6 से 10 के विद्यार्थियों के लिए हर महीने प्रकाशित होने वाले प्रेरणादायक हिंदी शैक्षिक लेख और पुस्तक समीक्षाएं पढ़ें।</p>
+          </div>
+          <a href="https://libraryjanakpurishift2.blogspot.com/" target="_blank" class="card-link">पूरा लेख ब्लॉग पर पढ़ें →</a>
+        </div>
+        <div class="card">
+          <div>
+            <span class="tag">Parent-Library Partnership</span>
+            <h3>👨‍👩‍👧‍👦 The Curious Parents Corner</h3>
+            <p>Weekly home reading tips, screen-free storytelling ideas, and age-appropriate book recommendations for parents.</p>
+          </div>
+          <button onclick="openModal('feedbackModal')" class="btn btn-soft" style="width: fit-content;">Request Book / Join Initiative</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Free Digital Bookshelf (Always Visible) -->
+    <h2 class="section-title">📚 Free Digital Bookshelf (Hover to Pause)</h2>
     <div class="shelf-wrapper">
-      <div class="marquee-track">
-        <!-- Set 1 -->
+      <div class="shelf-track">
         <div class="book-item">
-          <div class="book-cover" style="background:#3b7a57;">The Jungle Book</div>
+          <div class="book-cover">The Jungle Book</div>
           <h4>Rudyard Kipling</h4>
           <a href="https://www.gutenberg.org/ebooks/236" target="_blank">Read Free</a>
         </div>
         <div class="book-item">
-          <div class="book-cover" style="background:#5c6bc0;">Malgudi Days</div>
+          <div class="book-cover">Malgudi Days</div>
           <h4>R. K. Narayan</h4>
           <a href="https://ndl.iitkgp.ac.in/" target="_blank">Explore</a>
         </div>
         <div class="book-item">
-          <div class="book-cover" style="background:#8d6e63;">Panchatantra Tales</div>
+          <div class="book-cover">Panchatantra Tales</div>
           <h4>Classic Stories</h4>
           <a href="https://storyweaver.org.in/" target="_blank">Read Free</a>
         </div>
         <div class="book-item">
-          <div class="book-cover" style="background:#00838f;">Wings of Fire</div>
+          <div class="book-cover">Wings of Fire</div>
           <h4>Dr. A.P.J. Abdul Kalam</h4>
           <a href="https://ndl.iitkgp.ac.in/" target="_blank">Explore</a>
         </div>
         <div class="book-item">
-          <div class="book-cover" style="background:#6d4c41;">Ruskin Bond Stories</div>
-          <h4>Nature & Hills</h4>
+          <div class="book-cover">Ruskin Bond Stories</div>
+          <h4>Nature &amp; Hills</h4>
           <a href="https://storyweaver.org.in/" target="_blank">Read Free</a>
         </div>
-        <!-- Duplicate Set for Smooth Infinite Loop -->
+        <!-- Duplicate set for seamless loop -->
         <div class="book-item">
-          <div class="book-cover" style="background:#3b7a57;">The Jungle Book</div>
+          <div class="book-cover">The Jungle Book</div>
           <h4>Rudyard Kipling</h4>
           <a href="https://www.gutenberg.org/ebooks/236" target="_blank">Read Free</a>
         </div>
         <div class="book-item">
-          <div class="book-cover" style="background:#5c6bc0;">Malgudi Days</div>
+          <div class="book-cover">Malgudi Days</div>
           <h4>R. K. Narayan</h4>
           <a href="https://ndl.iitkgp.ac.in/" target="_blank">Explore</a>
         </div>
         <div class="book-item">
-          <div class="book-cover" style="background:#8d6e63;">Panchatantra Tales</div>
+          <div class="book-cover">Panchatantra Tales</div>
           <h4>Classic Stories</h4>
           <a href="https://storyweaver.org.in/" target="_blank">Read Free</a>
         </div>
         <div class="book-item">
-          <div class="book-cover" style="background:#00838f;">Wings of Fire</div>
+          <div class="book-cover">Wings of Fire</div>
           <h4>Dr. A.P.J. Abdul Kalam</h4>
           <a href="https://ndl.iitkgp.ac.in/" target="_blank">Explore</a>
         </div>
         <div class="book-item">
-          <div class="book-cover" style="background:#6d4c41;">Ruskin Bond Stories</div>
-          <h4>Nature & Hills</h4>
+          <div class="book-cover">Ruskin Bond Stories</div>
+          <h4>Nature &amp; Hills</h4>
           <a href="https://storyweaver.org.in/" target="_blank">Read Free</a>
         </div>
       </div>
     </div>
 
     <!-- Book of the Week -->
-    <h2 class="section-title" id="botw">Featured: Book of the Week</h2>
-    <div class="botw-box">
-      <div class="botw-cover">
-        <span>📖</span>
-        <p style="margin-top:8px;">The Blue Umbrella</p>
+    <h2 class="section-title">🌟 Featured: Book of the Week</h2>
+    <div class="botw-card">
+      <div class="botw-badge">
+        <span style="font-size: 2rem;">📖</span>
+        <p style="margin-top: 6px;">The Blue Umbrella</p>
       </div>
       <div class="botw-info">
-        <span class="botw-badge">Recommended for Classes 6 – 9</span>
-        <h3 style="color:var(--primary); margin-bottom:6px;">The Blue Umbrella — By Ruskin Bond</h3>
-        <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:14px;">
+        <span class="tag">Recommended for Classes 6 – 9</span>
+        <h3 style="margin-bottom: 6px;">The Blue Umbrella — By Ruskin Bond</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px;">
           A heartwarming story set in the hills of Garhwal about Binya, a young girl who trades her leopard-claw pendant for a beautiful blue silk umbrella, teaching timeless lessons on kindness, generosity, and forgiveness.
         </p>
         <a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank" class="btn btn-primary">Check Availability in Library</a>
@@ -587,64 +691,156 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2026 Library & Reading Portal | PM SHRI Kendriya Vidyalaya Janakpuri</p>
-    <p style="font-size:0.78rem; opacity:0.8; margin-top:4px;">Designed for Students, Teachers & Curious Readers</p>
+    <p>© 2026 Digital Library &amp; Reading Portal | PM SHRI Kendriya Vidyalaya Janakpuri</p>
+    <p style="opacity: 0.8; margin-top: 4px;">Designed for Students, Teachers &amp; Curious Readers</p>
   </footer>
 
-  <!-- Compact Floating Suggestion Button -->
-  <button class="fab-btn" onclick="openModal()">💬 Give Suggestion</button>
+  <!-- Compact Floating Buttons -->
+  <div class="fab-group">
+    <button class="fab-btn secondary" onclick="openModal('quizModal')">🧩 Quick Quiz</button>
+    <button class="fab-btn" onclick="openModal('feedbackModal')">💬 Give Suggestion</button>
+  </div>
 
-  <!-- Suggestion Modal -->
-  <div class="modal-overlay" id="suggestionModal">
+  <!-- MODAL 1: Feedback & Book Request (WhatsApp Ready) -->
+  <div id="feedbackModal" class="modal-overlay">
     <div class="modal-box">
-      <span class="close-modal" onclick="closeModal()">&times;</span>
-      <h3 style="color:var(--primary); font-size:1.1rem;">Library Feedback & Book Request</h3>
-      <div class="stars" id="starContainer">
-        <span onclick="rate(1)">★</span>
-        <span onclick="rate(2)">★</span>
-        <span onclick="rate(3)">★</span>
-        <span onclick="rate(4)">★</span>
-        <span onclick="rate(5)">★</span>
+      <span class="close-btn" onclick="closeModal('feedbackModal')">&times;</span>
+      <h3 style="color: var(--primary); margin-bottom: 8px;">Library Feedback &amp; Book Request</h3>
+      <div class="stars" id="starContainer" style="margin-bottom: 12px;">
+        <span onclick="setRating(1)">★</span>
+        <span onclick="setRating(2)">★</span>
+        <span onclick="setRating(3)">★</span>
+        <span onclick="setRating(4)">★</span>
+        <span onclick="setRating(5)">★</span>
       </div>
-      <input type="text" id="studentName" placeholder="Your Name & Class (e.g., Aarav, 8A)" />
-      <textarea id="suggestionText" rows="3" placeholder="Suggest a book title or share feedback..."></textarea>
-      <button class="btn btn-primary" style="width:100%; margin-top:6px;" onclick="sendSuggestion()">Send via WhatsApp</button>
+      <div class="form-group">
+        <label>Student / Parent Name &amp; Class</label>
+        <input type="text" id="fbName" placeholder="e.g., Aarav Sharma, Class 7B" />
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select id="fbType">
+          <option>New Book Request</option>
+          <option>Portal Suggestion</option>
+          <option>Reading Club Query</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Message / Book Title</label>
+        <textarea id="fbMsg" rows="3" placeholder="Write book name or suggestion..."></textarea>
+      </div>
+      <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="sendFeedback()">Send via WhatsApp to Librarian</button>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Interactive Library & Book Quiz -->
+  <div id="quizModal" class="modal-overlay">
+    <div class="modal-box">
+      <span class="close-btn" onclick="closeModal('quizModal')">&times;</span>
+      <h3 style="color: var(--primary); margin-bottom: 6px;">🏆 Little Bookworms &amp; Author Quiz</h3>
+      <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 14px;">Test your knowledge of famous books &amp; libraries!</p>
+      <div id="quizContent"></div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Career Details Modal -->
+  <div id="careerModal" class="modal-overlay">
+    <div class="modal-box">
+      <span class="close-btn" onclick="closeModal('careerModal')">&times;</span>
+      <h3 id="careerTitle" style="color: var(--primary); margin-bottom: 8px;"></h3>
+      <p id="careerDesc" style="font-size: 0.92rem; color: var(--text-dark); margin-bottom: 16px;"></p>
+      <a href="https://ndl.iitkgp.ac.in/" target="_blank" class="btn btn-primary">Explore Career Books on NDLI</a>
     </div>
   </div>
 
   <script>
-    let selectedRating = 5;
-
-    function openModal() {
-      document.getElementById('suggestionModal').style.display = 'flex';
-      rate(5);
+    // Tab Switching
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
     }
 
-    function closeModal() {
-      document.getElementById('suggestionModal').style.display = 'none';
+    // Modals
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+      if (id === 'quizModal') startQuiz();
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
     }
 
-    function rate(stars) {
-      selectedRating = stars;
-      const spans = document.querySelectorAll('#starContainer span');
-      spans.forEach((span, idx) => {
-        span.classList.toggle('active', idx < stars);
-      });
+    // Career Modal
+    function showCareer(title, desc) {
+      document.getElementById('careerTitle').innerText = title;
+      document.getElementById('careerDesc').innerText = desc;
+      openModal('careerModal');
     }
 
-    function sendSuggestion() {
-      const name = document.getElementById('studentName').value.trim() || 'Student';
-      const msg = document.getElementById('suggestionText').value.trim();
-      if (!msg) {
-        alert('Please write a book name or suggestion first.');
+    // Reading Pledge
+    function generatePledge() {
+      const name = document.getElementById('pledgeName').value.trim();
+      const cls = document.getElementById('pledgeClass').value;
+      const out = document.getElementById('pledgeOutput');
+      if (!name || !cls) {
+        out.innerText = "Please enter your name and select your class first.";
         return;
       }
-      const phone = '917309746347';
-      const text = encodeURIComponent(`📚 *Library Suggestion*\n*From:* ${name}\n*Rating:* ${selectedRating}/5 ⭐\n*Message:* ${msg}`);
-      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-      closeModal();
+      out.innerText = `🎉 Pledge Recorded! "I, ${name} (${cls}), pledge to read daily and explore the world of books at PM SHRI KV Janakpuri Library."`;
+    }
+
+    // Star Rating & WhatsApp Feedback
+    let currentRating = 5;
+    function setRating(n) {
+      currentRating = n;
+      const stars = document.querySelectorAll('#starContainer span');
+      stars.forEach((s, i) => s.classList.toggle('active', i < n));
+    }
+    setRating(5);
+
+    function sendFeedback() {
+      const name = document.getElementById('fbName').value.trim() || "Student";
+      const type = document.getElementById('fbType').value;
+      const msg = document.getElementById('fbMsg').value.trim();
+      if (!msg) { alert("Please write your message or book name."); return; }
+      const text = encodeURIComponent(`*KV Janakpuri Digital Library*\nName: ${name}\nType: ${type}\nRating: ${currentRating}/5\nMessage: ${msg}`);
+      window.open(`https://wa.me/917309746347?text=${text}`, '_blank');
+      closeModal('feedbackModal');
+    }
+
+    // Interactive Quiz Logic
+    const quizData = [
+      { q: "1. Who is the author of 'The Blue Umbrella' and 'The Room on the Roof'?", opts: ["R. K. Narayan", "Ruskin Bond", "Munshi Premchand", "Rabindranath Tagore"], ans: 1 },
+      { q: "2. Who is known as the Father of Library Science in India?", opts: ["Dr. S. R. Ranganathan", "Dr. A.P.J. Abdul Kalam", "C. V. Raman", "Homi J. Bhabha"], ans: 0 },
+      { q: "3. Which fictional town was created by R. K. Narayan?", opts: ["Narnia", "Malgudi", "Hogwarts", "Westeros"], ans: 1 },
+      { q: "4. 'Wings of Fire' is the autobiography of which Indian scientist & President?", opts: ["Dr. Rajendra Prasad", "Dr. S. Radhakrishnan", "Dr. A.P.J. Abdul Kalam", "Vikram Sarabhai"], ans: 2 }
+    ];
+    let qIdx = 0, score = 0;
+
+    function startQuiz() {
+      qIdx = 0; score = 0;
+      renderQuestion();
+    }
+    function renderQuestion() {
+      const box = document.getElementById('quizContent');
+      if (qIdx >= quizData.length) {
+        box.innerHTML = `<div style="text-align:center; padding:12px;">
+          <h4 style="font-size:1.15rem; color:var(--primary); margin-bottom:8px;">🎉 Quiz Completed!</h4>
+          <p style="font-size:1rem; margin-bottom:14px;">Your Score: <strong>${score} / ${quizData.length}</strong></p>
+          <button class="btn btn-primary" onclick="startQuiz()">Play Again</button>
+        </div>`;
+        return;
+      }
+      const item = quizData[qIdx];
+      box.innerHTML = `<p style="font-weight:600; margin-bottom:10px;">${item.q}</p>` +
+        item.opts.map((opt, idx) => `<button class="quiz-option" onclick="checkAns(${idx})">${opt}</button>`).join('');
+    }
+    function checkAns(idx) {
+      if (idx === quizData[qIdx].ans) score++;
+      qIdx++;
+      renderQuestion();
     }
   </script>
-
 </body>
 </html>
