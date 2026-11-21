@@ -38,15 +38,16 @@
       line-height: 1.6;
     }
 
-    /* Sticky Top Navbar */
+    /* Sticky Top Navbar with Dropdown Submenus (No Clipping) */
     header {
       background: linear-gradient(135deg, #1e4e68 0%, #3b4d71 55%, #4a4063 100%);
       color: #fff;
-      padding: 14px 24px;
+      padding: 13px 24px;
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.12);
+      z-index: 1000;
+      overflow: visible;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.14);
     }
     .header-inner {
       max-width: 1200px;
@@ -56,34 +57,131 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
+      overflow: visible;
     }
     .brand { display: flex; align-items: center; gap: 12px; }
-    .brand-icon {
-      width: 42px; height: 42px;
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 11px;
+      background: #ffffff;
+      padding: 3px;
+      object-fit: contain;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+    .brand-fallback {
+      width: 46px; height: 46px;
       background: rgba(255,255,255,0.16);
       border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
+      display: none;
+      align-items: center; justify-content: center;
       font-size: 1.4rem;
     }
-    .brand h1 { font-size: 1.28rem; font-weight: 800; letter-spacing: -0.3px; }
-    .brand p { font-size: 0.82rem; opacity: 0.9; font-weight: 500; }
+    .brand h1 { font-size: 1.26rem; font-weight: 800; letter-spacing: -0.3px; }
+    .brand p { font-size: 0.82rem; opacity: 0.92; font-weight: 500; }
 
-    nav ul { list-style: none; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    nav a, nav button {
+    /* Navigation & Dropdowns */
+    nav ul.main-menu {
+      list-style: none;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    nav ul.main-menu > li {
+      position: relative;
+    }
+    .menu-trigger {
       color: #fff;
       text-decoration: none;
       font-size: 0.84rem;
       font-weight: 600;
-      padding: 7px 13px;
+      padding: 8px 13px;
       border-radius: 9px;
       background: rgba(255,255,255,0.13);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       transition: all 0.2s ease;
+      font-family: inherit;
     }
-    nav a:hover, nav button:hover {
-      background: rgba(255,255,255,0.25);
-      transform: translateY(-1px);
+    .menu-trigger:hover, .has-dropdown.open > .menu-trigger {
+      background: rgba(255,255,255,0.26);
+    }
+
+    /* Floating Submenu Box */
+    .submenu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 245px;
+      background: #ffffff;
+      border: 1px solid #dbe4ef;
+      border-radius: 13px;
+      padding: 8px;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.18);
+      z-index: 1200;
+      list-style: none;
+    }
+    /* Right-align last dropdown so it never overflows screen */
+    nav ul.main-menu > li:last-child .submenu {
+      left: auto;
+      right: 0;
+    }
+    .has-dropdown:hover .submenu,
+    .has-dropdown.open .submenu {
+      display: block;
+      animation: dropFade 0.18s ease;
+    }
+    @keyframes dropFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .submenu li a, .submenu li button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      text-align: left;
+      padding: 9px 12px;
+      color: var(--text-dark);
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: 0.15s;
+    }
+    .submenu li a:hover, .submenu li button:hover {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+    .submenu-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 5px 8px;
+    }
+
+    /* Full-Width Header Banner Photo */
+    .header-banner-wrap {
+      max-width: 1200px;
+      margin: 16px auto 0;
+      padding: 0 20px;
+    }
+    .header-banner-img {
+      width: 100%;
+      max-height: 230px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid #dce6f2;
+      box-shadow: var(--shadow-md);
+      display: block;
     }
 
     /* Smooth News Ticker */
@@ -110,14 +208,14 @@
     /* Modern Hero Banner */
     .hero {
       max-width: 1200px;
-      margin: 22px auto 14px;
+      margin: 18px auto 14px;
       padding: 0 20px;
     }
     .hero-card {
       background: linear-gradient(125deg, #ffffff 0%, #eef5fb 52%, #f4effb 100%);
       border: 1px solid #dce6f2;
       border-radius: 22px;
-      padding: 30px 32px;
+      padding: 28px 30px;
       box-shadow: var(--shadow-md);
       display: grid;
       grid-template-columns: 1.5fr 1fr;
@@ -138,7 +236,7 @@
       margin-bottom: 10px;
     }
     .hero-content h2 {
-      font-size: 1.75rem;
+      font-size: 1.7rem;
       color: var(--primary);
       line-height: 1.25;
       margin-bottom: 10px;
@@ -146,7 +244,7 @@
     }
     .hero-content p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       margin-bottom: 20px;
     }
     .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -180,14 +278,14 @@
       gap: 12px;
     }
     .stat-tile {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.88);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px;
       text-align: center;
       box-shadow: var(--shadow-sm);
     }
-    .stat-tile strong { display: block; font-size: 1.25rem; color: var(--primary); font-weight: 800; }
+    .stat-tile strong { display: block; font-size: 1.2rem; color: var(--primary); font-weight: 800; }
     .stat-tile span { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
 
     /* Main Container & Category Tabs */
@@ -449,7 +547,7 @@
       position: fixed;
       inset: 0;
       background: rgba(15, 23, 42, 0.58);
-      z-index: 300;
+      z-index: 1500;
       justify-content: center;
       align-items: center;
       padding: 16px;
@@ -536,23 +634,74 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header with Logo & Dropdown Submenus -->
   <header>
     <div class="header-inner">
       <div class="brand">
-        <div class="brand-icon">📚</div>
+        <img src="logo.png" alt="PM SHRI KVS Logo" class="brand-logo" onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='flex';" />
+        <div id="logoFallback" class="brand-fallback">📚</div>
         <div>
           <h1>Digital Library Portal</h1>
           <p>PM SHRI Kendriya Vidyalaya Janakpuri</p>
         </div>
       </div>
+
       <nav>
-        <ul>
-          <li><a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank">e-Granthalaya &amp; Member Login</a></li>
-          <li><a href="https://kv-janakpuri-reading-por-cc615.web.app" target="_blank">Reading Tracker</a></li>
-          <li><button onclick="openModal('quizModal')">🧩 Play Quiz</button></li>
-          <li><button onclick="openModal('certModal')">🏅 Certificate</button></li>
-          <li><a href="https://libraryjanakpurishift2.blogspot.com/" target="_blank">Library Blog</a></li>
+        <ul class="main-menu">
+          <!-- Menu 1: Digital Libraries -->
+          <li class="has-dropdown">
+            <button class="menu-trigger" onclick="toggleDropdown(this)">🏛️ Digital Libraries ▾</button>
+            <ul class="submenu">
+              <li><a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank">🔍 e-Granthalaya Web OPAC</a></li>
+              <li><a href="https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=KVS" target="_blank">🔐 Member Login (EG4)</a></li>
+              <li class="submenu-divider"></li>
+              <li><a href="https://ndl.iitkgp.ac.in/" target="_blank">🇮🇳 National Digital Library (NDLI)</a></li>
+              <li><a href="https://storyweaver.org.in/" target="_blank">🌱 StoryWeaver Stories</a></li>
+              <li><a href="https://www.nbtindia.gov.in/" target="_blank">📖 National Book Trust (NBT)</a></li>
+              <li><a href="https://library.daisyindia.org/" target="_blank">♿ Sugamya Pustakalaya</a></li>
+              <li><a href="https://www.gutenberg.org/" target="_blank">🌍 Project Gutenberg</a></li>
+            </ul>
+          </li>
+
+          <!-- Menu 2: Study & STEM -->
+          <li class="has-dropdown">
+            <button class="menu-trigger" onclick="toggleDropdown(this)">📘 Study &amp; STEM ▾</button>
+            <ul class="submenu">
+              <li><a href="https://ncert.nic.in/textbook.php" target="_blank">📘 NCERT Textbooks (PDF)</a></li>
+              <li><a href="https://diksha.gov.in/" target="_blank">📲 DIKSHA E-Content</a></li>
+              <li><a href="https://cbseacademic.nic.in/" target="_blank">📄 CBSE Sample Papers</a></li>
+              <li class="submenu-divider"></li>
+              <li><a href="https://phet.colorado.edu/" target="_blank">🔬 PhET Science Simulations</a></li>
+              <li><a href="https://www.olabs.edu.in/" target="_blank">🧪 OLabs Virtual Experiments</a></li>
+              <li><a href="https://scratch.mit.edu/" target="_blank">💻 Scratch Coding (MIT)</a></li>
+            </ul>
+          </li>
+
+          <!-- Menu 3: Reading & Quiz -->
+          <li class="has-dropdown">
+            <button class="menu-trigger" onclick="toggleDropdown(this)">🎯 Reading &amp; Quiz ▾</button>
+            <ul class="submenu">
+              <li><a href="https://kv-janakpuri-reading-por-cc615.web.app" target="_blank">📊 KVS Reading Tracker Portal</a></li>
+              <li><button onclick="openModal('quizModal')">🧩 Play Class-Wise Quiz</button></li>
+              <li><button onclick="openModal('certModal')">🏅 Get Reading Certificate</button></li>
+              <li class="submenu-divider"></li>
+              <li><a href="#free-bookshelf">📚 Free Digital Bookshelf</a></li>
+              <li><a href="#book-of-week">🌟 Book of the Week</a></li>
+            </ul>
+          </li>
+
+          <!-- Menu 4: Careers & Blog -->
+          <li class="has-dropdown">
+            <button class="menu-trigger" onclick="toggleDropdown(this)">🚀 Careers &amp; Blog ▾</button>
+            <ul class="submenu">
+              <li><a href="https://www.ncs.gov.in/" target="_blank">🧭 National Career Service (NCS)</a></li>
+              <li><a href="https://www.nta.ac.in/" target="_blank">🎓 NTA / CUET / JEE / NEET</a></li>
+              <li><button onclick="openTabFromMenu('tab-cbse')">💼 Career Guidance Cards</button></li>
+              <li class="submenu-divider"></li>
+              <li><a href="https://libraryjanakpurishift2.blogspot.com/" target="_blank">✍️ Monthly Hindi Library Blog</a></li>
+              <li><button onclick="openModal('feedbackModal')">💬 Suggest a Book</button></li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </div>
@@ -563,6 +712,11 @@
     <div class="ticker-text">
       📢 Welcome to PM SHRI KV Janakpuri Digital Library! • KVS Reading Campaign 2026 is Live — Track your books, play Class-wise Library Quizzes &amp; download your Digital Reading Certificate! • Explore NCERT, DIKSHA, NDLI, StoryWeaver, CBSE Papers &amp; Career Roadmaps below.
     </div>
+  </div>
+
+  <!-- Full-Width Header Banner Photo (Auto-hides cleanly if banner.jpg is not uploaded yet) -->
+  <div class="header-banner-wrap" id="bannerContainer">
+    <img src="banner.jpg" alt="PM SHRI Kendriya Vidyalaya Janakpuri Library Banner" class="header-banner-img" onerror="document.getElementById('bannerContainer').style.display='none';" />
   </div>
 
   <!-- Hero Section -->
@@ -591,12 +745,12 @@
   <div class="container">
 
     <!-- Category Tabs -->
-    <div class="tab-bar">
-      <button class="tab-btn active" onclick="switchTab('tab-digital', this)">🏛️ Digital Libraries</button>
-      <button class="tab-btn" onclick="switchTab('tab-stem', this)">📘 Study &amp; STEM Labs</button>
-      <button class="tab-btn" onclick="switchTab('tab-campaign', this)">🎯 Reading Campaign &amp; Certificate</button>
-      <button class="tab-btn" onclick="switchTab('tab-cbse', this)">🚀 CBSE &amp; Career Guidance</button>
-      <button class="tab-btn" onclick="switchTab('tab-blog', this)">✍️ Hindi Blog &amp; Parents Corner</button>
+    <div class="tab-bar" id="portalTabs">
+      <button class="tab-btn active" id="btn-tab-digital" onclick="switchTab('tab-digital', this)">🏛️ Digital Libraries</button>
+      <button class="tab-btn" id="btn-tab-stem" onclick="switchTab('tab-stem', this)">📘 Study &amp; STEM Labs</button>
+      <button class="tab-btn" id="btn-tab-campaign" onclick="switchTab('tab-campaign', this)">🎯 Reading Campaign &amp; Certificate</button>
+      <button class="tab-btn" id="btn-tab-cbse" onclick="switchTab('tab-cbse', this)">🚀 CBSE &amp; Career Guidance</button>
+      <button class="tab-btn" id="btn-tab-blog" onclick="switchTab('tab-blog', this)">✍️ Hindi Blog &amp; Parents Corner</button>
     </div>
 
     <!-- TAB 1: Digital Libraries -->
@@ -828,7 +982,7 @@
     </div>
 
     <!-- Free Digital Bookshelf (Always Visible) -->
-    <div class="section-header">
+    <div class="section-header" id="free-bookshelf">
       <h2 class="section-title" style="margin:0;">📚 Free Digital Bookshelf (Hover to Pause)</h2>
     </div>
     <div class="shelf-wrapper">
@@ -888,7 +1042,7 @@
     </div>
 
     <!-- Book of the Week -->
-    <div class="section-header">
+    <div class="section-header" id="book-of-week">
       <h2 class="section-title" style="margin:0;">🌟 Featured: Book of the Week</h2>
     </div>
     <div class="botw-card">
@@ -1006,6 +1160,19 @@
   </div>
 
   <script>
+    // Mobile/Click Dropdown Submenu Toggle
+    function toggleDropdown(btn) {
+      const parent = btn.parentElement;
+      const isOpen = parent.classList.contains('open');
+      document.querySelectorAll('.has-dropdown').forEach(el => el.classList.remove('open'));
+      if (!isOpen) parent.classList.add('open');
+    }
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.has-dropdown')) {
+        document.querySelectorAll('.has-dropdown').forEach(el => el.classList.remove('open'));
+      }
+    });
+
     // Tab Switching
     function switchTab(tabId, btn) {
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -1014,8 +1181,16 @@
       btn.classList.add('active');
     }
 
+    function openTabFromMenu(tabId) {
+      const btn = document.getElementById('btn-' + tabId);
+      if (btn) switchTab(tabId, btn);
+      document.getElementById('portalTabs').scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('.has-dropdown').forEach(el => el.classList.remove('open'));
+    }
+
     // Modals
     function openModal(id) {
+      document.querySelectorAll('.has-dropdown').forEach(el => el.classList.remove('open'));
       document.getElementById(id).classList.add('open');
       if (id === 'quizModal') showQuizMenu();
     }
